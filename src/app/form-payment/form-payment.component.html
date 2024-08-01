@@ -1,0 +1,101 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="amount">Amount</label>
+    <input
+      type="number"
+      formControlName="amount"
+      class="form-control"
+      placeholder="Amount"
+    />
+    <div
+      *ngIf="
+        form.controls['amount'].invalid &&
+        (form.controls['amount'].touched || form.controls['amount'].dirty)
+      "
+      class="alert alert-danger"
+    >
+      Amount is too short or too long
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="date">Date</label>
+    <input
+      type="datetime-local"
+      formControlName="date"
+      class="form-control"
+      placeholder="Date"
+    />
+    <div
+      *ngIf="
+        form.controls['date'].invalid &&
+        (form.controls['date'].touched || form.controls['date'].dirty)
+      "
+      class="alert alert-danger"
+    >
+      Date is too short or too long
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select id="category" formControlName="category" class="form-control">
+      <option value="salaire">Salaire</option>
+      <option value="remboursement">Remboursement</option>
+      <option value="loisirs">Loisirs</option>
+      <option value="alimentaires">Alimentaires</option>
+      <option value="transports">Transports</option>
+    </select>
+    <div
+      *ngIf="
+        form.controls['category'].invalid &&
+        (form.controls['category'].touched || form.controls['category'].dirty)
+      "
+      class="alert alert-danger"
+    >
+      Category is too short or too long
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="place">Place</label>
+    <input
+      type="text"
+      formControlName="place"
+      class="form-control"
+      placeholder="Place"
+    />
+    <div
+      *ngIf="
+        form.controls['place'].invalid &&
+        (form.controls['place'].touched || form.controls['place'].dirty)
+      "
+      class="alert alert-danger"
+    >
+      Place is too short or too long
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="type">Type</label>
+    <select id="type" formControlName="type" class="form-control">
+      <option value="Entrée">Entrée</option>
+      <option value="Sortie">Sortie</option>
+    </select>
+    <div
+      *ngIf="
+        form.controls['type'].invalid &&
+        (form.controls['type'].touched || form.controls['type'].dirty)
+      "
+      class="alert alert-danger"
+    >
+      Type is too short or too long
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Valider</button>
+
+  <div id="alert" class="alert alert-success d-none" role="alert">
+    Données envoyé au local storage
+  </div>
+</form>

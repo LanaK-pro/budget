@@ -7,3 +7,20 @@
   width: 600px;
   height: 300px;
 }
+
+.pulse {
+  animation: pulse 5s;
+  animation-fill-mode: both;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: lightgreen;
+  }
+  100% {
+    background-color: transparent;
+  }
+}

@@ -1,5 +1,5 @@
 export interface iBudget {
-  id: number;
+  //id: number;
   amount: number;
   date: Date;
   category: string;

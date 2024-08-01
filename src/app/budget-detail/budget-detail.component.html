@@ -1,41 +1,170 @@
 <div class="container-fluid">
   <div class="row">
-    <h1 class="text-center mb-4 mt-3">Dashboard</h1>
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-body">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Spending 1</li>
-            <li class="list-group-item">Spending 2</li>
-            <li class="list-group-item">Spending 3</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body text-center">
-          <div class="doughnut-chart">
-            <canvas
-              baseChart
-              [data]="dataCategory"
-              [options]=""
-              [type]="'doughnut'"
-              id="myChart"
-            ></canvas>
+    <div class="col-md-0.5 bg-warning rounded-end text-center py-2">
+      <span class="text-white">Bonjour, Lana</span>
+    </div>
+    <div class="col-md-11.5">
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex justify-content-end">
+            <div class="bg-warning text-white rounded-bottom-3 p-3">
+              <h1 class="text-center">Dashboard</h1>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-body text-center">
-          <div class="bar-chart">
-            <canvas
-              baseChart
-              [data]="data"
-              [options]=""
-              [type]="'bar'"
-              id="myChart"
-            ></canvas>
+
+      <div class="row">
+        <div class="col-12">
+          <button
+            class="btn btn-primary"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseExample"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-arrow-up-short"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5"
+              />
+            </svg>
+            Nouveau paiment
+          </button>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              <app-form-payment></app-form-payment>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h2
+                class="text-start fs-6 text-uppercase fw-light text-secondary"
+              >
+                Dernières dépenses
+              </h2>
+              <ul class="list-group list-group-flush">
+                <li
+                  *ngFor="let mockdata of mockBudgetData"
+                  class="list-group-item d-flex align-items-center"
+                >
+                  <div class="flex-grow-1">
+                    <span class="fw-bold">{{ mockdata.amount }} € </span>
+                    <span>{{ mockdata.category }} </span>
+                  </div>
+                  <div class="flex-grow-1 text-end">
+                    <span>{{ mockdata.place }} </span>
+                    <span>{{ mockdata.type }} </span>
+                    <span class="fw-light"
+                      >{{ mockdata.date | date: "dd/MM" }}
+                    </span>
+                  </div>
+                </li>
+              </ul>
+              <!--     <ul class="list-group list-group-flush">
+                @for (budget of budgets; track budget.id) {
+                  <li class="list-group-item d-flex align-items-center">
+                    <div class="flex-grow-1">
+                      <span class="fw-bold"> {{ budget.amount }}€ </span>
+                      <span> {{ budget.category }} </span>
+                    </div>
+                    <div class="flex-grow-1 text-end">
+                      <span> {{ budget.place }} </span>
+                      <span>{{ budget.type }} </span>
+                      <span class="fw-light">
+                        {{ budget.date | date: "dd/MM" }}
+                      </span>
+                    </div>
+                  </li>
+                }
+              </ul>-->
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body text-center">
+              <div class="doughnut-chart">
+                <canvas
+                  baseChart
+                  [data]="dataCategory"
+                  [options]=""
+                  [type]="'doughnut'"
+                  id="myChart"
+                ></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card mb-3 d-inline-block w-25" id="contact">
+            <div class="card-body">
+              <h5
+                class="card-title d-flex justify-content-between align-items-center"
+              >
+                Contacter votre banque
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  class="bi bi-telephone"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"
+                  />
+                </svg>
+              </h5>
+            </div>
+          </div>
+
+          <style>
+            #contact {
+              transition: background-color 0.3s ease-in-out;
+            }
+
+            #contact:hover {
+              background-color: #3498db; /* A darker blue */
+              cursor: pointer;
+            }
+          </style>
+
+          <div class="card mb-3">
+            <div class="card-header">Solde actuel</div>
+            <div class="card-body">
+              <div class="d-flex align-items-center">
+                <span class="badge bg-success me-2">✓</span>
+                <h5 class="card-title">1000 €</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body text-center">
+              <div class="bar-chart">
+                <canvas
+                  baseChart
+                  [data]="data"
+                  [options]=""
+                  [type]="'bar'"
+                  id="myChart"
+                ></canvas>
+              </div>
+            </div>
           </div>
         </div>
       </div>

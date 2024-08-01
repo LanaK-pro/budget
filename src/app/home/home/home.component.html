@@ -5,7 +5,7 @@
   <h1 class="text-white">Application Budget</h1>
   <div class="card mt-5">
     <div class="card-body">
-      <form>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
           <input
@@ -13,6 +13,7 @@
             class="form-control"
             id="username"
             placeholder="Enter username"
+            formControlName="username"
           />
         </div>
         <div class="mb-3">
@@ -22,6 +23,7 @@
             class="form-control"
             id="password"
             placeholder="Enter password"
+            formControlName="password"
           />
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
@@ -29,4 +31,3 @@
     </div>
   </div>
 </div>
- 
